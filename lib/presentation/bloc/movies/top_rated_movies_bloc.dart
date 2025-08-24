@@ -10,6 +10,7 @@ class TopRatedMoviesBloc extends Bloc<TopRatedMoviesEvent, TopRatedMoviesState> 
     on<FetchTopRatedMovies>((event, emit) async {
       emit(TopRatedMoviesLoading());
 
+
       final result = await getTopRatedMovies.execute();
 
       result.fold(
