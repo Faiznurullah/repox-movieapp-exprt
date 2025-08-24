@@ -15,3 +15,12 @@ class OnQueryChanged extends MovieSearchEvent {
   @override
   List<Object> get props => [query];
 }
+
+class SearchMovies extends MovieSearchEvent {
+  final String query;
+
+  const SearchMovies(this.query);
+
+  @override
+  List<Object> get props => [query];
+}

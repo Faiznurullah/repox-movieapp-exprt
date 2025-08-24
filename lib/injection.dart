@@ -37,6 +37,10 @@ import 'package:ditonton/presentation/bloc/movies/movie_search_bloc.dart';
 import 'package:ditonton/presentation/bloc/movies/watchlist_movie_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv_series/popular_tv_series_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv_series/top_rated_tv_series_bloc.dart';
+import 'package:ditonton/presentation/bloc/tv_series/on_the_air_tv_series_bloc.dart';
+import 'package:ditonton/presentation/bloc/tv_series/tv_series_detail_bloc.dart';
+import 'package:ditonton/presentation/bloc/tv_series/tv_series_search_bloc.dart';
+import 'package:ditonton/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
@@ -78,6 +82,24 @@ void init() {
   );
   locator.registerFactory(
     () => TopRatedTvSeriesBloc(locator()),
+  );
+  locator.registerFactory(
+    () => OnTheAirTvSeriesBloc(locator()),
+  );
+  locator.registerFactory(
+    () => TvSeriesDetailBloc(
+      getTvSeriesDetail: locator(),
+      getTvSeriesRecommendations: locator(),
+      getTvSeriesWatchListStatus: locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => TvSeriesSearchBloc(locator()),
+  );
+  locator.registerFactory(
+    () => WatchlistTvSeriesBloc(
+      getWatchlistTvSeries: locator(),
+    ),
   );
 
   // use case
